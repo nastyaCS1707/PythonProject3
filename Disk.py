@@ -21,5 +21,5 @@ class Disk:
     @staticmethod
     def upload_at_disk(filename, token):
         link = Disk.get_link(filename, token)
-        with open("city.json", 'rb') as f:
+        with open(filename, 'rb') as f:
             requests.put(link, files={'file': f})
