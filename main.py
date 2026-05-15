@@ -1,15 +1,16 @@
 import os
 
-from Ipify import Ipify
 from Disk import Disk
+from FileManager import FileManager
 
 
 token = ""    # Вставьте свой токен для Яндекс.Диска
-file_name = input("Введите название для json-файла: ")
 
+# Проверяем корректность названия файла
+file_name = FileManager.check_file_name(input("Введите название для json-файла: "))
 
-# Создаем файл формата json c названием города по местоположению
-Ipify.create_file(file_name)
+# Создаем файл формата json c названием города, полученным по IP
+FileManager.create_file_with_city(file_name)
 
 # Создаем папку и загружаем файл на диск
 Disk.upload_at_disk(file_name, token)
